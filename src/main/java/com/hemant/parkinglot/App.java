@@ -1,13 +1,11 @@
 package com.hemant.parkinglot;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+import java.io.IOException;
+
+import org.springframework.shell.Bootstrap;
+
+public class App {
+	public static void main(String[] args) throws IOException {
+		Bootstrap.main(args);
+	}
 }
