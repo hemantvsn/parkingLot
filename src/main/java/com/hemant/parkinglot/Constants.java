@@ -11,4 +11,5 @@ public class Constants {
 	public static final String SLOT_FREED = "Slot number %d is free.";
 	public static final String PARKING_LOT_NOT_CREATED_YET = "Parking lot is not created yet.";
 	public static final String STATUS_FORMAT = "%s \t\t %s \t\t %s \t\t \n";
+	public static final String NOT_FOUND = "Not Found.";
 }

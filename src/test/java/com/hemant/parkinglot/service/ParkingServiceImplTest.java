@@ -13,24 +13,26 @@ public class ParkingServiceImplTest {
 	/**
 	 * Cannot create parking lot with negative size
 	 */
-	@Test
+	@Test(expected = ParkingException.class)
 	public void testInitNeg1() {
 		try {
 			service.init(-1);
 		} catch (ParkingException e) {
 			assertEquals(Constants.PARKING_LOT_NEGATIVE_SIZE_EXC, e.getMessage());
+			throw e;
 		}
 	}
 
 	/**
 	 * Cannot create parking lot with 0 size
 	 */
-	@Test
+	@Test(expected = ParkingException.class)
 	public void testInitNeg2() {
 		try {
 			service.init(0);
 		} catch (ParkingException e) {
 			assertEquals(Constants.PARKING_LOT_NEGATIVE_SIZE_EXC, e.getMessage());
+			throw e;
 		}
 	}
 

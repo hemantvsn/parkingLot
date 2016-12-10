@@ -15,12 +15,13 @@ public class ParkingServiceImplParkTest {
 	 * If parking request is made before initializing the manager,
 	 * then it should throw exception
 	 */
-	@Test
+	@Test(expected = ParkingException.class)
 	public void testPark1() {
 		try {
 			service.parkCar(new Car("xyz", "white"));
 		} catch (ParkingException e) {
 			assertEquals(Constants.PARKING_LOT_NOT_CREATED_YET, e.getMessage());
+			throw e;
 		}
 	}
 	
@@ -37,14 +38,15 @@ public class ParkingServiceImplParkTest {
 	 * For a parking lot of size = 1, first car should be parked at slot 1.
 	 * Next park request should throw an exception as lot is full
 	 */
-	@Test
+	@Test(expected = ParkingException.class)
 	public void testPark3() {
 		service.init(1);
 		assertEquals(String.format(Constants.ALLOCATED_SLOT_NO, 1), service.parkCar(new Car("xyz", "white")));
 		try {
-			service.parkCar(new Car("xyz", "white"));
+			service.parkCar(new Car("abc", "white"));
 		} catch (ParkingException e) {
 			assertEquals(Constants.PARKING_IS_FULL, e.getMessage());
+			throw e;
 		}
 	}
 
@@ -54,14 +56,15 @@ public class ParkingServiceImplParkTest {
 	 * If next park request, has same regNo, it should smell fish and 
 	 * return exception saying this car is already parked
 	 */
-	@Test
+	@Test(expected = ParkingException.class)
 	public void testPark4() {
-		service.init(1);
-		assertEquals(String.format(Constants.ALLOCATED_SLOT_NO, 3), service.parkCar(new Car("xyz", "white")));
+		service.init(3);
+		assertEquals(String.format(Constants.ALLOCATED_SLOT_NO, 1), service.parkCar(new Car("xyz", "white")));
 		try {
 			service.parkCar(new Car("xyz", "white"));
 		} catch (ParkingException e) {
 			assertEquals(Constants.CAR_ALREADY_PARKED, e.getMessage());
+			throw e;
 		}
 	}
 	
@@ -73,7 +76,7 @@ public class ParkingServiceImplParkTest {
 	 * For next park request, except lot is full exception
 	 * 
 	 */
-	@Test
+	@Test(expected = ParkingException.class)
 	public void testPark5() {
 		service.init(3);
 		assertEquals(String.format(Constants.ALLOCATED_SLOT_NO, 1), service.parkCar(new Car("abc", "white")));
@@ -83,6 +86,7 @@ public class ParkingServiceImplParkTest {
 			service.parkCar(new Car("lmn", "white"));
 		} catch (ParkingException e) {
 			assertEquals(Constants.PARKING_IS_FULL, e.getMessage());
+			throw e;
 		}
 	}
 	
