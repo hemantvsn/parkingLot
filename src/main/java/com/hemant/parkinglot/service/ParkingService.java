@@ -12,4 +12,10 @@ public interface ParkingService {
 
 	String getStatus();
 
+	String getAllRegForColour(String colour);
+
+	String getAllSlotsForColour(String colour);
+
+	String getSlotForRegNo(String regNo);
+
 }

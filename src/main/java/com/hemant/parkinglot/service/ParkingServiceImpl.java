@@ -46,4 +46,19 @@ public class ParkingServiceImpl implements ParkingService {
 			throw new ParkingException(Constants.PARKING_LOT_NOT_CREATED_YET);
 		}
 	}
+
+	@Override
+	public String getAllRegForColour(String colour) {
+		return manager.getAllRegForColour(colour);
+	}
+	
+	@Override
+	public String getAllSlotsForColour(String colour) {
+		return manager.getAllSlotsForColour(colour);
+	}
+	
+	@Override
+	public String getSlotForRegNo(String regNo) {
+		return manager.getSlotForRegNo(regNo);
+	}
 }
