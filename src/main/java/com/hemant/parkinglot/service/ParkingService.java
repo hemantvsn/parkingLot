@@ -8,4 +8,8 @@ public interface ParkingService {
 
 	String parkCar(Car car);
 
+	String clearSlot(int slotNo);
+
+	String getStatus();
+
 }

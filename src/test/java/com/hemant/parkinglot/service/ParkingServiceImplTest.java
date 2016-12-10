@@ -1,7 +1,6 @@
 package com.hemant.parkinglot.service;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -11,6 +10,9 @@ import com.hemant.parkinglot.model.exception.ParkingException;
 public class ParkingServiceImplTest {
 	ParkingService service = new ParkingServiceImpl();
 
+	/**
+	 * Cannot create parking lot with negative size
+	 */
 	@Test
 	public void testInitNeg1() {
 		try {
@@ -20,6 +22,9 @@ public class ParkingServiceImplTest {
 		}
 	}
 
+	/**
+	 * Cannot create parking lot with 0 size
+	 */
 	@Test
 	public void testInitNeg2() {
 		try {
@@ -29,21 +34,21 @@ public class ParkingServiceImplTest {
 		}
 	}
 
+	/**
+	 * Parking lot with size 3 must be created easily
+	 */
 	@Test
 	public void testInitPos1() {
 		int size = 3;
 		assertEquals(String.format(Constants.LOT_CREATED_WITH_SIZE, size), service.init(size));
 	}
 
+	/**
+	 * Parking lot with size 5 must be created succesfully
+	 */
 	@Test
 	public void testInitPos2() {
 		int size = 5;
 		assertEquals(String.format(Constants.LOT_CREATED_WITH_SIZE, size), service.init(size));
 	}
-
-	@Test
-	public void testParkCar() {
-		fail("Not yet implemented");
-	}
-
 }

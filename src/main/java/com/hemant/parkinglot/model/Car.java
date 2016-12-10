@@ -13,10 +13,6 @@ public class Car {
 	private String regNumber;
 	private String colour;
 
-	public Car() {
-		// Auto-generated constructor stub
-	}
-
 	public Car(String regNumber, String colour) {
 		super();
 		this.regNumber = regNumber;
