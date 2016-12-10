@@ -24,7 +24,10 @@ public class Car {
 	}
 
 	public void setRegNumber(String regNumber) {
-		this.regNumber = regNumber;
+		// command line may introduce additional spaces
+		if(null != regNumber) {
+			this.regNumber = regNumber.trim();
+		}
 	}
 
 	public String getColour() {
@@ -32,7 +35,10 @@ public class Car {
 	}
 
 	public void setColour(String colour) {
-		this.colour = colour;
+		// command line may introduce additional spaces
+		if(null != colour) {
+			this.colour = colour.trim();
+		}
 	}
 
 	/**
