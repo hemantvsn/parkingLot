@@ -49,16 +49,19 @@ public class ParkingServiceImpl implements ParkingService {
 
 	@Override
 	public String getAllRegForColour(String colour) {
+		isManagerCreated();
 		return manager.getAllRegForColour(colour);
 	}
 	
 	@Override
 	public String getAllSlotsForColour(String colour) {
+		isManagerCreated();
 		return manager.getAllSlotsForColour(colour);
 	}
 	
 	@Override
 	public String getSlotForRegNo(String regNo) {
+		isManagerCreated();
 		return manager.getSlotForRegNo(regNo);
 	}
 }
